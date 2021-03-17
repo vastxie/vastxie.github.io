@@ -1,0 +1,20 @@
+div {
+  padding: 10%;
+  border: 5px double blue;
+  margin: 10%;
+  background-color: skyblue;
+}
+
+h1 {
+  color: azure;
+  text-shadow: 1px 1px 3px black;
+}
+
+h1 + p {
+  width: max-content;
+  color: brown;
+}
+
+img {
+  height: 300px;
+}
