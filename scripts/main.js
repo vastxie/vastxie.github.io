@@ -1,35 +1,21 @@
-let myImage = document.querySelector('img');
+const list = document.createElement('ul');
+const info = document.createElement('p');
+const html = document.querySelector('html');
 
-myImage.onclick = function () {
-    let myScr = myImage.getAttribute('src');
-    if (myScr === 'images/Chrome.jpeg') {
-        myImage.setAttribute('src', 'images/edge.jpeg');
-    }
-    else {
-        myImage.setAttribute('src', 'images/Chrome.jpeg');
-    }
-}
+info.textContent = '以下是一个动态列表。点击列表外任意位置可添加新的列表项。点击已有的列表项可修改内容。';
 
-let myButton = document.querySelector('button');
-let myHeading = document.querySelector('h1');
+document.body.appendChild(info);
+document.body.appendChild(list);
 
-function setUserName() {
-    let myName = prompt('请输入你的名字。');
-    if(!myName || myName === null) {
-        setUserName();
-    } else {
-        localStorage.setItem('name', myName);
-        myHeading.innerHTML = 'Mozilla 酷毙了，' + myName;
-    }
-}
+html.onclick = function() {
+    const listItem = document.createElement('li');
+    const listContent = prompt('希望列表中显示什么内容？');
+    listItem.textContent = listContent;
+    list.appendChild(listItem);
 
-if(!localStorage.getItem('name')) {
-    setUserName();
-} else {
-    let storedName = localStorage.getItem('name');
-    myHeading.textContent = 'Mozilla 酷毙了，' + storedName;
-}
-
-myButton.onclick = function() {
-    setUserName();
-}
+    listItem.onclick = function(e) {
+    e.stopPropagation();
+    const listContent = prompt('为列表项输入新的内容');
+    this.textContent = listContent;
+    };
+};
